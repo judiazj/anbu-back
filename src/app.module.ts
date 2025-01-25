@@ -1,7 +1,9 @@
 import { Module } from '@nestjs/common';
+import { ShinobiModule } from './shinobi/shinobi.module';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
-  imports: [],
+  imports: [ShinobiModule, MongooseModule.forRoot('')],
   controllers: [],
   providers: [],
 })
