@@ -7,6 +7,7 @@ import { Shinobi, ShinobiSchema } from './schemas/shinobi.schema';
 @Module({
   controllers: [ShinobiController],
   providers: [ShinobiService],
-  imports: [MongooseModule.forFeature([{ name: Shinobi.name, schema: ShinobiSchema }])]
+  imports: [MongooseModule.forFeature([{ name: Shinobi.name, schema: ShinobiSchema }])],
+  exports: [ShinobiService],
 })
-export class ShinobiModule {}
+export class ShinobiModule { }

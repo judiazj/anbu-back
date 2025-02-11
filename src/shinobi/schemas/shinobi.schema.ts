@@ -5,7 +5,7 @@ export type ShinobiDocument = HydratedDocument<Shinobi>;
 
 @Schema({ timestamps: false, versionKey: false })
 export class Shinobi {
-  @Prop({ required: true, unique: true })
+  @Prop({ required: true, unique: true, index: true })
   alias: string;
 
   @Prop({ required: true, default: new Date() })

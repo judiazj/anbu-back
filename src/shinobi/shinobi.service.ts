@@ -34,6 +34,10 @@ export class ShinobiService {
     return shinobi;
   }
 
+  async findShinobiByAlias(alias: string) {
+    return await this.shinobiModel.findOne<Shinobi>({ alias });
+  }
+
   async update(id: string, updateShinobiDto: UpdateShinobiDto) {
     const updatedShinobi = await this.shinobiModel.findByIdAndUpdate<Shinobi>(id, updateShinobiDto, { new: true });
 
