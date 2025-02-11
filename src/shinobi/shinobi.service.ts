@@ -38,6 +38,18 @@ export class ShinobiService {
     return await this.shinobiModel.findOne<Shinobi>({ alias });
   }
 
+  async changePassword(alias: string) {
+    const newPassword = crypto.randomUUID();
+
+    const updatedShinobi = await this.shinobiModel.findOneAndUpdate<Shinobi>(
+      { alias },
+      { password: newPassword },
+      { new: true }
+    );
+
+    return updatedShinobi;
+  }
+
   async update(id: string, updateShinobiDto: UpdateShinobiDto) {
     const updatedShinobi = await this.shinobiModel.findByIdAndUpdate<Shinobi>(id, updateShinobiDto, { new: true });
 
