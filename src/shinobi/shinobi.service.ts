@@ -8,10 +8,10 @@ import { Model } from 'mongoose';
 @Injectable()
 export class ShinobiService {
 
-  constructor( 
+  constructor(
     @InjectModel(Shinobi.name) private readonly shinobiModel: Model<ShinobiDocument>
-    
-  ) {}
+
+  ) { }
 
   async create(createShinobiDto: CreateShinobiDto) {
     const newShinobi: Shinobi = await this.shinobiModel.create(createShinobiDto);

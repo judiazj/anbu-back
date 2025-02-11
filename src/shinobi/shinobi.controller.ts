@@ -5,7 +5,7 @@ import { UpdateShinobiDto } from './dto/update-shinobi.dto';
 
 @Controller('shinobi')
 export class ShinobiController {
-  constructor(private readonly shinobiService: ShinobiService) {}
+  constructor(private readonly shinobiService: ShinobiService) { }
 
   @Post()
   create(@Body() createShinobiDto: CreateShinobiDto) {
