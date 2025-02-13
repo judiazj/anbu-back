@@ -3,7 +3,7 @@ import { CreateShinobiDto } from './dto/create-shinobi.dto';
 import { UpdateShinobiDto } from './dto/update-shinobi.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Shinobi, ShinobiDocument } from './schemas/shinobi.schema';
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 
 @Injectable()
 export class ShinobiService {
@@ -26,7 +26,7 @@ export class ShinobiService {
     return shinobis;
   }
 
-  async findOne(id: string) {
+  async findOne(id: Types.ObjectId) {
     const shinobi = await this.shinobiModel.findById<Shinobi>(id);
 
     if (!shinobi) throw new NotFoundException(`Shinobi with id ${id} not found`);
