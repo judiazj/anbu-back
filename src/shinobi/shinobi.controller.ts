@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { ShinobiService } from './shinobi.service';
 import { UpdateShinobiDto } from './dto/update-shinobi.dto';
 import { MongoIdPipe } from 'src/common/pipes/mongo-id.pipe';
+import { Types } from 'mongoose';
 
 @Controller('shinobi')
 export class ShinobiController {
@@ -13,7 +14,7 @@ export class ShinobiController {
   }
 
   @Get(':id')
-  async findOne(@Param('id', MongoIdPipe) id: string) {
+  async findOne(@Param('id', MongoIdPipe) id: Types.ObjectId) {
     return await this.shinobiService.findOne(id);
   }
 
