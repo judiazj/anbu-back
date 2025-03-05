@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
 
+import { Notificacion } from './schemas/notificacion.schema';
 import { CreateNotificacionDto } from './dto/create-notificacion.dto';
 import { UpdateNotificacionDto } from './dto/update-notificacion.dto';
 
@@ -9,7 +10,7 @@ import { UpdateNotificacionDto } from './dto/update-notificacion.dto';
 export class NotificacionesService {
 
   constructor(
-    @InjectModel(Notification.name) private readonly notificationModel: Model<Notification>
+    @InjectModel(Notificacion.name) private readonly notificationModel: Model<Notificacion>
   ) { }
 
   async create(createNotificacionDto: CreateNotificacionDto) {
