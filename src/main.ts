@@ -9,6 +9,12 @@ async function bootstrap() {
 
   app.setGlobalPrefix('api/v1');
 
+  app.enableCors({
+    origin: [envs.originUrl1, envs.originUrl2],
+    methods: 'GET,POST,PUT,DELETE',
+    credentials: true,
+  });
+
   const config = new DocumentBuilder()
     .setTitle('Anbu API')
     .setDescription('Esta es la api del grupo secreto mas poderoso de Colombia')

@@ -4,7 +4,7 @@ import { UpdateShinobiDto } from './dto/update-shinobi.dto';
 import { MongoIdPipe } from 'src/common/pipes/mongo-id.pipe';
 import { Types } from 'mongoose';
 
-@Controller('shinobi')
+@Controller('shinobis')
 export class ShinobiController {
   constructor(private readonly shinobiService: ShinobiService) { }
 

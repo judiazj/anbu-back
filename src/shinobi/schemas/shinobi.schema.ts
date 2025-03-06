@@ -5,6 +5,9 @@ export type ShinobiDocument = HydratedDocument<Shinobi>;
 
 @Schema({ timestamps: false, versionKey: false })
 export class Shinobi {
+
+  _id: Types.ObjectId;
+
   @Prop({ required: true, unique: true, index: true })
   alias: string;
 

@@ -25,7 +25,12 @@ export class AuthService {
     if (shinobi.password !== password) throw new BadRequestException('Invalid credentials');
 
     const newShinobi = await this.shinobiService.changePassword(alias);
-    const payload = { alias: shinobi.alias, password: newShinobi.password };
+    const payload = {
+      alias: shinobi.alias,
+      password: newShinobi.password,
+      rango: shinobi.rango,
+      id: shinobi._id
+    };
 
     return {
       access_token: await this.jwtService.signAsync(payload)
