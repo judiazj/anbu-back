@@ -3,7 +3,7 @@ import { Types } from 'mongoose';
 
 import { CreateMisionDto } from './create-mision.dto';
 import { IsEnum, IsMongoId, IsOptional } from 'class-validator';
-import { Estado } from '../enums/mision.enum';
+import { EstadoMision } from '../enums/mision.enum';
 
 const CreateMisionDtoWithoutHokageId = OmitType(CreateMisionDto, ['id_hokage'] as const);
 
@@ -19,7 +19,7 @@ export class UpdateMisionDto extends PartialType(CreateMisionDtoWithoutHokageId)
   rango: string;
 
   @ApiProperty()
-  @IsEnum(Estado)
+  @IsEnum(EstadoMision)
   @IsOptional()
   estado: string;
 

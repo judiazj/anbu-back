@@ -6,6 +6,7 @@ import { CreateMisionDto } from './dto/create-mision.dto';
 import { UpdateMisionDto } from './dto/update-mision.dto';
 import { Mision } from './schemas/mision.schema';
 import { ShinobiService } from '../shinobi/shinobi.service';
+import { EstadoMision } from './enums/mision.enum';
 
 @Injectable()
 export class MisionesService {
@@ -51,6 +52,27 @@ export class MisionesService {
     if (!mision) throw new NotFoundException('Mision no encontrada');
 
     return mision;
+  }
+
+  async findMisionsByShinobi(alias: string) {
+    const shinobi = await this.shinobiService.findShinobiByAlias(alias);
+
+    if (!shinobi) throw new NotFoundException('Shinobi no encontrado');
+
+    const [misionesCompletas, misionesFallidas, misionesRetrasadas, misionesPendientes]
+      = await Promise.all([
+        this.misionModel.find<Mision>({ id_cazador: shinobi._id, estado: EstadoMision.COMPLETADA }),
+        this.misionModel.find<Mision>({ id_cazador: shinobi._id, estado: EstadoMision.FALLIDA }),
+        this.misionModel.find<Mision>({ id_cazador: shinobi._id, estado: EstadoMision.RETRASADA }),
+        this.misionModel.find<Mision>({ id_cazador: shinobi._id, estado: EstadoMision.EN_PROCESO }),
+      ]);
+
+    return {
+      misionesCompletas,
+      misionesFallidas,
+      misionesRetrasadas,
+      misionesPendientes,
+    };
   }
 
   async remove(id: string) {

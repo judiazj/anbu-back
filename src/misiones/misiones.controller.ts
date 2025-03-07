@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
 
 import { MisionesService } from './misiones.service';
 import { CreateMisionDto } from './dto/create-mision.dto';
@@ -17,6 +17,11 @@ export class MisionesController {
   @Get()
   findAll() {
     return this.misionesService.findAll();
+  }
+
+  @Get('shinobis/:alias')
+  findMisionsByShinobi(@Param('alias') alias: string,) {
+    return this.misionesService.findMisionsByShinobi(alias);
   }
 
   @Get(':id')

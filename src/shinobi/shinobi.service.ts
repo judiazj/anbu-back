@@ -35,7 +35,11 @@ export class ShinobiService {
   }
 
   async findShinobiByAlias(alias: string) {
-    return await this.shinobiModel.findOne<Shinobi>({ alias });
+    const shinobi = await this.shinobiModel.findOne<Shinobi>({ alias });
+
+    if (!shinobi) throw new NotFoundException(`Shinobi with alias ${alias} not found`);
+
+    return shinobi;
   }
 
   async changePassword(alias: string) {

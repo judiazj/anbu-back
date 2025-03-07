@@ -1,5 +1,5 @@
 
-export enum Estado {
+export enum EstadoMision {
   EN_PROCESO = 'en proceso',
   COMPLETADA = 'completada',
   FALLIDA = 'fallida',

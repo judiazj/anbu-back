@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument, Types } from 'mongoose';
 
-import { Estado, Rango } from '../enums/mision.enum';
+import { EstadoMision, Rango } from '../enums/mision.enum';
 
 export type MisionDocument = HydratedDocument<Mision>;
 
@@ -23,7 +23,7 @@ export class Mision {
   @Prop()
   fecha_fin?: Date;
 
-  @Prop({ default: Estado.EN_PROCESO, enum: Estado })
+  @Prop({ default: EstadoMision.EN_PROCESO, enum: EstadoMision })
   estado: string;
 
   @Prop({ enum: Rango })
