@@ -11,7 +11,7 @@ async function bootstrap() {
 
   app.enableCors({
     origin: [envs.originUrl1, envs.originUrl2],
-    methods: 'GET,POST,PUT,DELETE',
+    methods: 'GET,POST,PUT,DELETE, PATCH',
     credentials: true,
   });
 
