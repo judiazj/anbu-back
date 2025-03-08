@@ -13,11 +13,7 @@ export class ShinobiController {
     return await this.shinobiService.findAll();
   }
 
-<<<<<<< HEAD
   @Get(':id')
-=======
-  @Delete(':id')
->>>>>>> 6b5ccbf24d596358f91a1ecd94d3b108a21110a8
   async findOne(@Param('id', MongoIdPipe) id: Types.ObjectId) {
     return await this.shinobiService.findOne(id);
   }
