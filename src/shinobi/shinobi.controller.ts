@@ -13,8 +13,13 @@ export class ShinobiController {
     return await this.shinobiService.findAll();
   }
 
+  @Delete(':id')
+  async findOne(@Param('id', MongoIdPipe) id: Types.ObjectId) {
+    return await this.shinobiService.findOne(id);
+  }
+
   @Get(':alias')
-  async findOne(@Param('alias') alias: string) {
+  async findByAlias(@Param('alias') alias: string) {
     return await this.shinobiService.findShinobiByAlias(alias);
   }
 
