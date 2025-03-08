@@ -7,6 +7,9 @@ interface EnvVars {
     JWT_SECRET: string;
     ORIGIN_URL1: string;
     ORIGIN_URL2?: string;
+    CLOUDINARY_CLOUD_NAME: string;
+    CLOUDINARY_API_KEY: string;
+    CLOUDINARY_API_SECRET: string;
 }
 
 const envsSchema = joi.object({
@@ -15,6 +18,9 @@ const envsSchema = joi.object({
     JWT_SECRET: joi.string().required(),
     ORIGIN_URL1: joi.string().required(),
     ORIGIN_URL2: joi.string().allow('').optional(),
+    CLOUDINARY_CLOUD_NAME: joi.string().allow('').optional(),
+    CLOUDINARY_API_KEY: joi.string().allow('').optional(),
+    CLOUDINARY_API_SECRET: joi.string().allow('').optional(),
 })
     .unknown(true);
 
@@ -32,5 +38,8 @@ export const envs = {
     jwtSecret: envVars.JWT_SECRET,
     originUrl1: envVars.ORIGIN_URL1,
     originUrl2: envVars.ORIGIN_URL2,
+    cloudinaryCloudName: envVars.CLOUDINARY_CLOUD_NAME,
+    cloudinaryApiKey: envVars.CLOUDINARY_API_KEY,
+    cloudinaryApiSecret: envVars.CLOUDINARY_API_SECRET,
 }
 

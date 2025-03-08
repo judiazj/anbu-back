@@ -8,6 +8,7 @@ const baseUpdateDto = OmitType(CreateShinobiDto, ['password', 'alias'] as const)
 
 export class UpdateShinobiDto extends PartialType(baseUpdateDto) {
   @ApiProperty()
+  @IsOptional()
   img?: string;
 
   @ApiProperty()
